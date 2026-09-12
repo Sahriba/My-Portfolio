@@ -1,0 +1,529 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahriba Salam Sara | Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0d0c1d;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 12, 29, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(181, 23, 158, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #b5179e;
+            text-decoration: none;
+        }
+
+        .navbar a {
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: #b5179e;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Section Common Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 8% 60px;
+        }
+
+        .heading {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .heading span {
+            color: #b5179e;
+        }
+
+        /* Home Section */
+        .home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .home-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .home-content h1 {
+            font-size: 52px;
+            font-weight: 700;
+            margin: -3px 0;
+        }
+
+        .home-content .text-animate h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #b5179e;
+            margin-bottom: 15px;
+        }
+
+        .home-content p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .btn-box {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #b5179e;
+            border-radius: 40px;
+            box-shadow: 0 0 10px #b5179e;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.5s;
+        }
+
+        .btn-box:hover {
+            box-shadow: 0 0 20px #b5179e, 0 0 40px #b5179e;
+        }
+
+        .social-icons {
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid #b5179e;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #b5179e;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: 0.5s;
+        }
+
+        .social-icons a:hover {
+            background: #b5179e;
+            color: #0d0c1d;
+            box-shadow: 0 0 20px #b5179e;
+        }
+
+        /* Avatar Glow Effect */
+        .home-img {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-img::before {
+            content: '';
+            position: absolute;
+            width: 105%;
+            height: 105%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #b5179e, #7209b7, #4361ee);
+            animation: animateGlow 4s linear infinite;
+        }
+
+        @keyframes animateGlow {
+            0% { transform: rotate(0deg); filter: blur(10px); }
+            100% { transform: rotate(360deg); filter: blur(10px); }
+        }
+
+        .home-img img {
+            width: 95%;
+            height: 95%;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 1;
+            border: 5px solid #0d0c1d;
+        }
+
+        /* About & Education */
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #16152b;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(181, 23, 158, 0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #b5179e;
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #b5179e;
+            margin-bottom: 10px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-box {
+            background: #16152b;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(181, 23, 158, 0.2);
+            transition: 0.3s;
+        }
+
+        .skill-box:hover {
+            background: #b5179e;
+            color: #fff;
+            box-shadow: 0 0 15px #b5179e;
+        }
+
+        .skill-box i {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        /* Portfolio / Projects */
+        .project-card {
+            background: #16152b;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(181, 23, 158, 0.3);
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            color: #b5179e;
+            margin-bottom: 15px;
+        }
+
+        .project-card ul {
+            margin-left: 20px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(181, 23, 158, 0.2);
+            color: #b5179e;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid #b5179e;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: #16152b;
+            width: 100%;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(181, 23, 158, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #b5179e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 130px;
+            }
+
+            .home-img {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 30px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                padding: 20px 0;
+                background: #16152b;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: 0.5s ease;
+            }
+
+            .navbar.active {
+                left: 0;
+            }
+
+            .navbar a {
+                margin: 15px 0;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#home" class="logo">Sahriba Salam Sara</a>
+        <div class="menu-icon" id="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, I'm</h3>
+            <h1>Sahriba Salam Sara</h1>
+            <div class="text-animate">
+                <h3 id="typing-text">Computer Science Graduate</h3>
+            </div>
+            <p>
+                Motivated Computer Science and Engineering Graduate with a strong foundation in programming languages including HTML, CSS, Python, JavaScript, C++, and C. Demonstrated hands-on experience in web development, data structures, and AI-driven solutions. 
+            </p>
+            <a href="#contact" class="btn-box">Contact Me</a>
+            
+            <div class="social-icons">
+                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:sahribasara77@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:+8801896074943"><i class="fa-solid fa-phone"></i></a>
+            </div>
+        </div>
+
+        <div class="home-img">
+            <img src="https://via.placeholder.com/350" alt="Sahriba Salam Sara">
+        </div>
+    </section>
+
+    <!-- About & Education Section -->
+    <section id="about">
+        <h2 class="heading">About <span>Me & Education</span></h2>
+        <div class="about-container">
+            <div class="card">
+                <h3>PMSCS</h3>
+                <h4>Jahangirnagar University</h4>
+                <p>Sept 2026 - Present | Dhaka[cite: 1]</p>
+            </div>
+            <div class="card">
+                <h3>B.Sc. in Computer Science & Engineering</h3>
+                <h4>Dhaka City College</h4>
+                <p>CGPA: 3.47[cite: 1] | Dec 2023[cite: 1]</p>
+            </div>
+            <div class="card">
+                <h3>HSC (Science)</h3>
+                <h4>Narayanganj Govt. Mohila College</h4>
+                <p>GPA: 4.08[cite: 1] | Jun 2019[cite: 1]</p>
+            </div>
+            <div class="card">
+                <h3>SSC (Science)</h3>
+                <h4>Narayanganj Govt. Girls' High School</h4>
+                <p>GPA: 5.00[cite: 1] | Apr 2017[cite: 1]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="skills-container">
+            <div class="skill-box"><i class="fa-brands fa-python"></i><h4>Python</h4></div>
+            <div class="skill-box"><i class="fa-brands fa-js"></i><h4>JavaScript</h4></div>
+            <div class="skill-box"><i class="fa-brands fa-html5"></i><h4>HTML & CSS</h4></div>
+            <div class="skill-box"><i class="fa-solid fa-code"></i><h4>C / C++</h4></div>
+            <div class="skill-box"><i class="fa-solid fa-mobile-screen"></i><h4>Flutter</h4></div>
+            <div class="skill-box"><i class="fa-solid fa-server"></i><h4>Django</h4></div>
+            <div class="skill-box"><i class="fa-solid fa-eye"></i><h4>OpenCV</h4></div>
+            <div class="skill-box"><i class="fa-solid fa-database"></i><h4>MySQL</h4></div>
+            <div class="skill-box"><i class="fa-brands fa-github"></i><h4>GitHub</h4></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="pojects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="project-card">
+            <h3>Smart Detection of Missing Persons via Distributed Phone Cameras and AI</h3>
+            <ul>
+                <li>Developed an AI-powered system using OpenCV to detect and recognize missing persons from distributed smartphone cameras[cite: 1].</li>
+                <li>Built a Flutter mobile application integrated with a Django backend for real-time image processing via REST APIs[cite: 1].</li>
+                <li>Stored and managed facial data using MySQL with local in-memory optimization for accelerated facial matching[cite: 1].</li>
+            </ul>
+            <div class="tech-stack">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">MySQL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                    <h4>Email</h4>
+                    <p>sahribasara77@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                    <h4>Phone</h4>
+                    <p>+8801896074943</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>32/1 Principle Khagendranath Road, Narayanganj, Dhaka[cite: 1]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const navbar = document.getElementById('navbar');
+
+        menuBtn.onclick = () => {
+            navbar.classList.toggle('active');
+        };
+
+        // Close Mobile Menu on Click
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+            });
+        });
+
+        // Typing Text Animation
+        const roles = ["Computer Science Graduate", "Web Developer", "Flutter & Django Dev", "AI/OpenCV Enthusiast"];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+        (function type() {
+            if (count === roles.length) {
+                count = 0;
+            }
+            currentText = roles[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById('typing-text').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 150);
+            }
+        })();
+    </script>
+</body>
+</html>
